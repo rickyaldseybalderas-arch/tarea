@@ -1,46 +1,20 @@
 import Header from './components/Header'
-import TaskCard from './components/TaskCard'
-import './App.css'
-
-const tareas = [
-  {
-    id: 1,
-    materia: 'IHC',
-    docente: 'Bryana Ojopi',
-    fecha: '15/10/2026',
-    estado: 'En progreso',
-  },
-  {
-    id: 2,
-    materia: 'Calculo II',
-    docente: 'Carlos Mendoza',
-    fecha: '20/10/2026',
-    estado: 'Pendiente',
-  },
-  {
-    id: 3,
-    materia: 'Programacion Orientada a Objetos',
-    docente: 'Lucia Fernandez',
-    fecha: '24/10/2026',
-    estado: 'Finalizada',
-  },
-]
+import FilterBar from './components/FilterBar'
+import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="app-shell">
+    <div className="mx-auto min-h-svh w-full max-w-[960px] bg-white px-5 py-6 sm:px-8 sm:py-8 md:px-14 dark:bg-[#16171d]">
       <Header />
 
-      {/* Task Seccion */}
-      <main className="task-section">
-        <h2>Mis tareas</h2>
-        <div className="task-list">
-          {tareas.map((tarea) => (
-            <TaskCard key={tarea.id} {...tarea} />
-          ))}
-        </div>
+      <main className="pt-5 sm:pt-7">
+        <h2 className="mb-4 border-b-2 border-dashed border-[#e5e4e7] pb-2 text-xl font-medium text-[#08060d] sm:text-2xl dark:border-[#2e303a] dark:text-[#f3f4f6]">
+          Mis tareas
+        </h2>
+        <FilterBar />
       </main>
 
+      <Footer />
     </div>
   )
 }

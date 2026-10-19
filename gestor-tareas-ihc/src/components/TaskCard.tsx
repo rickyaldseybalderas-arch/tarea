@@ -5,30 +5,34 @@ function TaskCard(props: any) {
   var cuando = datos.fecha
   var comoVa = datos.estado
 
-  var pedazoEstado = ''
-  for (var i = 0; i < comoVa.length; i++) {
-    var letra = comoVa[i]
-    if (letra === ' ') {
-      pedazoEstado = pedazoEstado + '-'
+  var claseEstado =
+    'shrink-0 border px-1.5 py-0.5 text-[11px] font-bold uppercase tracking-wide'
+
+  if (comoVa == 'Pendiente') {
+    claseEstado = claseEstado + ' text-[#8a6500] border-[#8a6500]'
+  } else {
+    if (comoVa == 'En progreso') {
+      claseEstado = claseEstado + ' text-[#0d5a7a] border-[#0d5a7a]'
     } else {
-      pedazoEstado = pedazoEstado + letra.toLowerCase()
+      claseEstado = claseEstado + ' text-[#1a5c38] border-[#1a5c38]'
     }
   }
 
-  var claseDelEstado =
-    'task-status' + ' ' + 'task-status-' + pedazoEstado
-
   return (
-    <div className={'task-card'}>
-      <div className="task-card-heading">
-        <h3>{nombreMateria}</h3>
-        <span className={claseDelEstado}>{comoVa}</span>
+    <div className="border-2 border-[#b8b4bc] border-l-[5px] border-l-[#888] bg-[#faf9f7] px-4 py-3.5 text-left shadow-[3px_3px_0_#ddd] dark:border-[#444] dark:border-l-[#777] dark:bg-[#1c1d24] dark:shadow-[3px_3px_0_#0d0e12]">
+      <div className="mb-2.5 flex flex-wrap items-center justify-between gap-2">
+        <h3 className="m-0 text-[17px] leading-tight font-semibold text-[#08060d] dark:text-[#f3f4f6]">
+          {nombreMateria}
+        </h3>
+        <span className={claseEstado}>{comoVa}</span>
       </div>
-      <p>
-        <strong>{'Docente:'}</strong> {' ' + profe}
+      <p className="text-[15px] leading-snug text-[#6b6375] dark:text-[#9ca3af]">
+        <strong className="text-[#08060d] dark:text-[#f3f4f6]">{'Docente:'}</strong>
+        {' ' + profe}
       </p>
-      <p>
-        <strong>{'Fecha:'}</strong> {' ' + cuando}
+      <p className="mt-1 text-[15px] leading-snug text-[#6b6375] dark:text-[#9ca3af]">
+        <strong className="text-[#08060d] dark:text-[#f3f4f6]">{'Fecha:'}</strong>
+        {' ' + cuando}
       </p>
     </div>
   )
